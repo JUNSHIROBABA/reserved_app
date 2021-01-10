@@ -18,8 +18,7 @@
 |prefecture_id|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
-|address|string|null: false|
-|building|string|null: false|
+|building|string||
 
 ### Association
 - has_one :card
@@ -55,6 +54,7 @@
 
 ### Association
 - has_many :stations, through: :stations_trains
+- has_many :reserves
 
 ## stations_trainsテーブル
 
