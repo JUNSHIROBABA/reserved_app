@@ -1,24 +1,79 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DB設計
+## usersテーブル
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|  
+|encrypted_password|string|null: false|
+|lastname|string|null: false|
+|firstname|string|null: false|
+|lastname_kana|string|null: false|
+|firstname_kana|string|null: false|
+|firstname_kana|string|null: false|
+|phone|string|null: false|
+|postcode|string|null: false|
+|prefecture_id|integer|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|address|string|null: false|
+|building|string|null: false|
 
-* Ruby version
+### Association
+- has_one :card
+- has_many :reserves
 
-* System dependencies
+## cardsテーブル
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|card_token|string|null: false|
+|card_token|string|null: false|
+|user|references|foreign_key: true|
 
-* Database creation
+### Association
+- belongs_to :user
 
-* Database initialization
+## stationsテーブル
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
 
-* Services (job queues, cache servers, search engines, etc.)
+## Association
+- has_many :trains, through: :stations_trains
 
-* Deployment instructions
+## trainsテーブル
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|departure_date|date|null: false|
+|departure_time|string|null: false|
+
+### Association
+- has_many :stations, through: :stations_trains
+
+## stations_trainsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|station|references|foreign_key: true|
+|train|references|foreign_key: true|
+
+### Association
+- belongs_to :station
+- belongs_to :train
+
+## reserveテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|foreign_key: true|
+|train|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :train
