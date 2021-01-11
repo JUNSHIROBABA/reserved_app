@@ -54,6 +54,7 @@
 
 ### Association
 - has_many :stations, through: :stations_trains
+- has_many :cars
 - has_many :reserves
 
 ## stations_trainsテーブル
@@ -66,6 +67,26 @@
 ### Association
 - belongs_to :station
 - belongs_to :train
+
+## carsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|car|integer|null: false|
+|train|references|foreign_key: true|
+
+### Association
+- belongs_to :train
+- has_many :seats
+
+## seatsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|seat|string|null: false|
+|car|references|foreign_key: true|
+
+### Association
+- belongs_to :car
 
 ## reserveテーブル
 
