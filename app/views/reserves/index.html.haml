@@ -1,0 +1,15 @@
+%h1 トップページ
+%br
+.login
+  - if user_signed_in?
+    = current_user.nickname
+    %br
+    = link_to destroy_user_session_path, method: :delete do
+      ログアウト 
+  - else
+    = link_to new_user_registration_path do
+      ユーザ新規登録
+    %br
+    = link_to new_user_session_path do
+      ログイン
+
