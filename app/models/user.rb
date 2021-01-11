@@ -15,7 +15,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email
-    validates :password, format: { with: /\A[a-zA-Z0-9]+\z/}
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/}
     validates :phone, format: { with: /\A\d{11}\z/}
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/}
     validates :prefecture_id, numericality: { other_than: 0}
