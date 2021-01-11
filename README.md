@@ -12,7 +12,6 @@
 |firstname|string|null: false|
 |lastname_kana|string|null: false|
 |firstname_kana|string|null: false|
-|firstname_kana|string|null: false|
 |phone|string|null: false|
 |postcode|string|null: false|
 |prefecture_id|integer|null: false|
