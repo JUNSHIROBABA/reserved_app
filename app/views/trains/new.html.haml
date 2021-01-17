@@ -1,0 +1,14 @@
+%h1 列車登録画面
+.form
+  = form_with model: @train, local: true do |f|
+    .trainname
+      列車名
+      = f.text_field :name
+      %br
+      始発駅出発日
+      = f.date_select :departure_date, use_month_numbers: true
+      %br
+      始発駅出発時間
+      = f.time_select :departure_time
+      %br
+      = f.submit  "登録する"
