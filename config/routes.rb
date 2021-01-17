@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'reserves#index'
-
-  # resouces :reserves
+  resources :trains, only: [:index, :new, :create]
 end
