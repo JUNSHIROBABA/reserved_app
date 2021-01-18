@@ -49,7 +49,7 @@
 |------|----|-------|
 |name|string|null: false|
 |departure_date|date|null: false|
-|departure_time|string|null: false|
+|departure_time|time|null: false|
 
 ### Association
 - has_many :stations, through: :stations_trains

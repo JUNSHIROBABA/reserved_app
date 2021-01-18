@@ -5,7 +5,10 @@
     = current_user.nickname
     %br
     = link_to destroy_user_session_path, method: :delete do
-      ログアウト 
+      ログアウト
+    %br
+    = link_to trains_path do
+      列車を登録する
   - else
     = link_to new_user_registration_path do
       ユーザ新規登録
