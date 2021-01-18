@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_005402) do
+ActiveRecord::Schema.define(version: 2021_01_18_011733) do
 
   create_table "stations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "train_stations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "train_id"
+    t.bigint "station_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["station_id"], name: "index_train_stations_on_station_id"
+    t.index ["train_id"], name: "index_train_stations_on_train_id"
   end
 
   create_table "trains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -49,4 +58,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_005402) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "train_stations", "stations"
+  add_foreign_key "train_stations", "trains"
 end

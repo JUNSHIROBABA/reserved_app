@@ -5,6 +5,7 @@ class TrainsController < ApplicationController
 
   def new
     @train = Train.new
+    @stations = Station.all
   end
 
   def create
