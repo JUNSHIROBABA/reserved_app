@@ -11,4 +11,11 @@
       始発駅出発時間
       = f.time_select :departure_time
       %br
+      停車駅
+      - @stations.each_with_index do |station, i|
+        %br
+        = f.check_box :station
+        .stationname{data: {index: i}}
+          = station.name
+      %br
       = f.submit  "登録する"
